@@ -13,22 +13,22 @@ Supported Version
 How to use?
 --------------------------
 
-1. git clone 
+Step1. git clone 
 
 `git clone https://github.com/nak3/twiddle_for_eap6.git`
 
-2. run build.sh
+Step2. run build.sh
 
 eg)
     
     cd release
     ./build.sh
 
-3. copy jboss-cli.sh from your JBoss EAP 6 (JBoss AS 7)
+Step3. copy jboss-cli.sh from your JBoss EAP 6 (JBoss AS 7)
 
 `cp JBOSS_HOME/bin/client/jboss-client.jar release`
 
-4. Now, it's ready! Run twiddle!
+Step4. Now, it's ready! Run twiddle!
 
 `./RELEASE_DIR/twiddle.sh <options>`
 
