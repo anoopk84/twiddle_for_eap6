@@ -1,0 +1,35 @@
+<assembly>
+  <id>twiddle</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>target/classes</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>org/jboss/console/twiddle/**</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>src/resources</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>org/jboss/console/twiddle/**</include>
+        <include>commands.properties</include>
+        <include>**</include>
+        <include>log4j.properties</include>
+        <include>jndi.properties</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>/</outputDirectory>      
+      <useProjectArtifact>true</useProjectArtifact>
+      <unpack>true</unpack>
+      <scope>runtime</scope>
+    </dependencySet>
+  </dependencySets>
+</assembly>
