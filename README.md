@@ -1,10 +1,9 @@
 Twiddle for EAP 6
 ===========================
 
-Twiddle for EAP 6 is fork of Twiddle included in EAP 5 to modifed to support EAP 6 by Kenjiro Nakayama. 
+Twiddle for EAP 6 is fork of Twiddle included in JBoss EAP 5, and modified to support EAP 6 by Kenjiro Nakayama.
 
-*CAUTION*
-SOFTWARE ASSUMES NO RESPONSIBILITY FOR ERRORS OR OMISSIONS IN THE INFORMATION OR SOFTWARE*
+We, the author company contributor and  
 
 Supported Version
 ---------------------------
@@ -19,8 +18,6 @@ Step1. git clone
 
 Step2. run build.sh
 
-eg)
-    
     cd release
     ./build.sh
 
