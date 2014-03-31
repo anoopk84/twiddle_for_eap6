@@ -13,9 +13,9 @@ Supported Version
 How to use?
 --------------------------
 
-1. git clone
+1. git clone 
 
-    `git clone `
+    `git clone https://github.com/nak3/twiddle_for_eap6.git`
 
 2. run build.sh
 
@@ -35,7 +35,7 @@ eg)
 Usage example
 --------------------------
 
-* Datasource
+* eg) Datasource
 
 How many connections my datasource(ExampleDS) is using now?
 
