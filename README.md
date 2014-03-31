@@ -20,22 +20,23 @@ How to use?
 2. run build.sh
 
 eg)
+    
     cd release
     ./build.sh
 
 3. copy jboss-cli.sh from your JBoss EAP 6 (JBoss AS 7)
 
-    cp JBOSS_HOME/bin/client/jboss-client.jar release
+    `cp JBOSS_HOME/bin/client/jboss-client.jar release`
 
 4. Now, it's ready! Run twiddle!
 
-    ./RELEASE_DIR/twiddle.sh <options>
+    `./RELEASE_DIR/twiddle.sh <options>`
 
 
 Usage example
 --------------------------
 
-* eg) Datasource
+eg) Datasource
 
 How many connections my datasource(ExampleDS) is using now?
 
@@ -44,10 +45,10 @@ How many connections my datasource(ExampleDS) is using now?
 
 How many connections my datasource(ExampleDS) can use now? 
 
-    ./twiddle.sh -s localhost -u admin -p Passw0rd! get jboss.as:subsystem=datasources,data-source=ExampleDS,statistics=pool AvailableCount
+    ./twiddle.sh -s $HOST_NAME -u $USER_NAME -p $PASSWORD get jboss.as:subsystem=datasources,data-source=ExampleDS,statistics=pool AvailableCount
     AvailableCount=30
 
 How can I set maxPoolsize of my dagtasource(ExampleDS)?
 
-    ./twiddle.sh -s HOST_NAME -u USER_NAME -p Passw0rd! set jboss.as:subsystem=datasources,data-source=ExampleDS  maxPoolSize 20
+    ./twiddle.sh -s $HOST_NAME -u $USER_NAME -p $PASSWORD set jboss.as:subsystem=datasources,data-source=ExampleDS  maxPoolSize 20
     maxPoolSize=20
