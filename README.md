@@ -8,7 +8,7 @@ Twiddle for EAP 6 can change access port by `-a` option, it is different from pr
 
 Supported Version
 ---------------------------
-* EAP 6 and JBoss AS 7
+* EAP 6 and AS7/Wildfly
 
 How to use?
 --------------------------
