@@ -19,17 +19,23 @@ Step1. git clone
 
 Step2. run build.sh
 
-    cd release
+    cd twiddle_for_eap6
     ./build.sh
 
 Step3. copy jboss-cli.sh from your JBoss EAP 6 (JBoss AS 7)
 
-    cp JBOSS_HOME/bin/client/jboss-client.jar release
+    cp JBOSS_HOME/bin/client/jboss-client.jar ./release
 
 Step4. Now, it's ready! Run twiddle!
 
-    ./RELEASE_DIR/twiddle.sh <options>
+    cd release
+    ./twiddle.sh <options>
 
+(or you can move to somewhere you want to use it)
+
+    cp -r release /SOMEWHERE/PATH/twiddle
+	cd /SOMEWHERE/PATH/twiddle
+	./twiddle.sh <options>
 
 Usage example
 --------------------------
