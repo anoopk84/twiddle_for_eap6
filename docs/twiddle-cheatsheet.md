@@ -10,7 +10,7 @@ How to execute Full GC?
     ./twiddle.sh -s $HOST_NAME -u $USER_NAME -p $PASSWORD invoke java.lang:type=Memory gc
     'null'
 
-*NOTE* This result is 'null'. Check GC log in your server with adding GC log option like this.
+**NOTE** This result is 'null'. Check GC log in your server with adding GC log option like this.
 
     JAVA_OPTS="$JAVA_OPTS -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps"
 
@@ -60,9 +60,12 @@ How can I set maxPoolsize of my dagtasource(eg.ExampleDS)?
 Web Container
 -----------------
 
-#### Not using executor situation
+It depends on using executor or not.
 
-*NOTE* If you want to get from jboss.web:*, you need to add following java option.
+
+##### Not using executor situation
+
+**NOTE** If you want to get from jboss.web:*, you need to add following java option.
 
      JAVA_OPTS="$JAVA_OPTS -Dorg.apache.tomcat.util.ENABLE_MODELER=true"
 
@@ -71,7 +74,7 @@ How many active threads in my web container?
      ./twiddle.sh -s $HOST_NAME -u $USER_NAME -p $PASSWORD get jboss.web:type=ThreadPool,name=http--$HOST_IP-$PORT_NUM currentThreadsBusy
     currentThreadsBusy=0
 
-#### Using executor situation
+##### Using executor situation
 
 How many active threads in my web container?
 

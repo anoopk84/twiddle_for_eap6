@@ -34,6 +34,8 @@ Step4. Now, it's ready! Run twiddle!
 Usage example
 --------------------------
 
+See [twiddle-cheatsheet](https://github.com/nak3/twiddle_for_eap6/blob/master/docs/twiddle-cheatsheet.md)
+
 eg. Datasource
 
 How many connections my datasource(eg. ExampleDS) is using now?
