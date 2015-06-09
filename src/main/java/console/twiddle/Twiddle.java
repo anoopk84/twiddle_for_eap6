@@ -227,7 +227,7 @@ public class Twiddle {
     if (serverURL == null && port == null) {
       serverURL = "service:jmx:remoting-jmx://localhost:9999";
     } else if (serverURL == null) {
-      serverURL = "service:jmx:remoting-jmx://localhost" + port;
+      serverURL = "service:jmx:remoting-jmx://localhost:" + port;
     } else if (port == null) {
       serverURL = "service:jmx:remoting-jmx://" + serverURL + ":9999";
     } else {
