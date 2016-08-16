@@ -26,17 +26,12 @@ package console.twiddle.command;
 
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
-import org.jboss.util.Strings;
 
-import javax.management.InstanceNotFoundException;
-import javax.management.IntrospectionException;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanParameterInfo;
-import javax.management.ObjectName;
-import javax.management.ReflectionException;
-
+import javax.management.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class QueryMethodCommand
     extends MBeanServerCommand {
@@ -69,8 +64,10 @@ public class QueryMethodCommand
 
   private void processArguments( final String[] args )
       throws CommandException {
-    log.debug( "processing arguments: " + Strings.join( args, "," ) );
-
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
     if ( args.length == 0 ) {
       throw new CommandException( "Command requires arguments" );
     }

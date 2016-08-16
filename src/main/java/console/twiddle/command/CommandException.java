@@ -24,9 +24,7 @@
  */
 package console.twiddle.command;
 
-import org.jboss.util.NestedException;
-
-public class CommandException extends NestedException {
+public class CommandException extends Exception {
 	//
 	// jason: need to expose the source command of the exception
 	//

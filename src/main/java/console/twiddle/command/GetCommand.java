@@ -24,22 +24,16 @@ t *     Jason Dillon <jason at planet57 dot com>
  */
 package console.twiddle.command;
 
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import javax.management.ObjectName;
-import javax.management.MBeanServerConnection;
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.MBeanInfo;
-import javax.management.MBeanAttributeInfo;
-
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
 
-import org.jboss.util.Strings;
+import javax.management.*;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GetCommand
     extends MBeanServerCommand
@@ -73,7 +67,10 @@ public class GetCommand
   private boolean processArguments(final String[] args)
       throws CommandException
   {
-    log.debug("processing arguments: " + Strings.join(args, ","));
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
 
     if (args.length == 0)
     {
@@ -159,7 +156,10 @@ public class GetCommand
 
     String[] names = new String[attributeNames.size()];
     attributeNames.toArray(names);
-    log.debug("as string[]: " + Strings.join(names, ","));
+    if (log.isDebugEnabled())
+    {
+      log.debug("as string[]: " + Stream.of(names).collect(Collectors.joining(",")));
+    }
 
     AttributeList attrList = server.getAttributes(objectName, names);
     log.debug("attribute list: " + attrList);

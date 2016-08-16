@@ -28,14 +28,13 @@ package console.twiddle.command;
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
 
+import javax.management.MBeanServerConnection;
+import javax.management.ObjectName;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Set;
-
-import javax.management.MBeanServerConnection;
-import javax.management.ObjectName;
-
-import org.jboss.util.Strings;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ServerInfoCommand extends MBeanServerCommand {
   public static final int UNKNOWN = 0;
@@ -64,8 +63,10 @@ public class ServerInfoCommand extends MBeanServerCommand {
   }
 
   private void processArguments(final String[] args) throws CommandException {
-    log.debug("processing arguments: " + Strings.join(args, ","));
-
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
     if (args.length == 0) {
       throw new CommandException("Command requires arguments");
     }

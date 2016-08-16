@@ -24,19 +24,13 @@
  */
 package console.twiddle.command;
 
-import java.io.PrintWriter;
-
-import javax.management.ObjectName;
-import javax.management.MBeanServerConnection;
-import javax.management.MBeanInfo;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanParameterInfo;
-
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
 
-import org.jboss.util.Strings;
+import javax.management.*;
+import java.io.PrintWriter;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InfoCommand
     extends MBeanServerCommand
@@ -62,7 +56,10 @@ public class InfoCommand
   private boolean processArguments(final String[] args)
       throws CommandException
   {
-    log.debug("processing arguments: " + Strings.join(args, ","));
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
 
     if (args.length == 0)
     {

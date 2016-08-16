@@ -26,22 +26,22 @@
  */
 package console.twiddle.command;
 
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
+import org.jboss.common.beans.property.BeanUtils;
+import org.jboss.common.beans.property.finder.PropertyEditorFinder;
+
+import javax.management.MBeanInfo;
+import javax.management.MBeanOperationInfo;
+import javax.management.MBeanServerConnection;
+import javax.management.ObjectName;
 import java.beans.PropertyEditor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import javax.management.MBeanInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanServerConnection;
-import javax.management.ObjectName;
-
-import gnu.getopt.Getopt;
-import gnu.getopt.LongOpt;
-
-import org.jboss.common.beans.property.BeanUtils;
-import org.jboss.common.beans.property.finder.PropertyEditorFinder;
-import org.jboss.util.Strings;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InvokeCommand
     extends MBeanServerCommand
@@ -82,7 +82,10 @@ public class InvokeCommand
   private void processArguments(final String[] args)
       throws CommandException
   {
-    log.debug("processing arguments: " + Strings.join(args, ","));
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
 
     if (args.length == 0)
     {
@@ -228,8 +231,12 @@ public class InvokeCommand
       editor.setAsText((String) opArgs.get(i));
       params[i] = editor.getValue();
     }
-    log.debug("Using params: " + Strings.join(params, ","));
-      
+
+    if (log.isDebugEnabled())
+    {
+      log.debug("Using params: " + Stream.of(params).map(String::valueOf).collect(Collectors.joining(",")));
+    }
+
     // invoke the operation
     Object result = server.invoke(name, opName, params, matchOp.getSignature());
     log.debug("Raw result: " + result);

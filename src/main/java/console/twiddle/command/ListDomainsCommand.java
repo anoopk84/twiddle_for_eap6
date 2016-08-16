@@ -26,9 +26,10 @@ package console.twiddle.command;
 
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
-import org.jboss.util.Strings;
 
 import java.io.PrintWriter;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ListDomainsCommand
     extends MBeanServerCommand {
@@ -54,8 +55,10 @@ public class ListDomainsCommand
 
   private void processArguments( final String[] args )
       throws CommandException {
-    log.debug( "processing arguments: " + Strings.join( args, "," ) );
-
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
     String sopts = "-:c";
     LongOpt[] lopts =
         {

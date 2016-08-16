@@ -25,39 +25,26 @@
  */
 package console.twiddle;
 
+import console.twiddle.command.Command;
+import console.twiddle.command.CommandContext;
+import console.twiddle.command.CommandException;
+import console.twiddle.command.NoSuchCommandException;
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import org.apache.log4j.Logger;
+import org.jboss.security.SecurityAssociation;
+import org.jboss.security.SimplePrincipal;
+import org.jboss.util.Strings;
 
 import javax.management.MBeanServerConnection;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 import javax.naming.NamingException;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import console.twiddle.command.Command;
-import console.twiddle.command.CommandContext;
-import console.twiddle.command.CommandException;
-import console.twiddle.command.NoSuchCommandException;
-import org.jboss.security.SecurityAssociation;
-import org.jboss.security.SimplePrincipal;
-import org.jboss.util.Strings;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 
 public class Twiddle {
 

@@ -24,10 +24,8 @@
  */
 package console.twiddle.command;
 
-import org.jboss.logging.Logger;
-// TODO
-//import java.util.logging.Logger
-import org.jboss.util.NullArgumentException;
+
+import org.apache.log4j.Logger;
 
 public abstract class AbstractCommand implements Command {
   protected Logger log = Logger.getLogger(getClass());

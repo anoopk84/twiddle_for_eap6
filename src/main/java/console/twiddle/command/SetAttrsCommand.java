@@ -24,25 +24,19 @@
  */
 package console.twiddle.command;
 
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
+import org.jboss.common.beans.property.BeanUtils;
+import org.jboss.common.beans.property.finder.PropertyEditorFinder;
+
+import javax.management.*;
 import java.beans.PropertyEditor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanInfo;
-import javax.management.MBeanServerConnection;
-import javax.management.ObjectName;
-
-import gnu.getopt.Getopt;
-import gnu.getopt.LongOpt;
-
-import org.jboss.common.beans.property.BeanUtils;
-import org.jboss.common.beans.property.finder.PropertyEditorFinder;
-import org.jboss.util.Strings;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SetAttrsCommand
     extends MBeanServerCommand
@@ -75,8 +69,10 @@ public class SetAttrsCommand
   private boolean processArguments(final String[] args)
       throws CommandException
   {
-    log.debug("processing arguments: " + Strings.join(args, ","));
-
+    if (log.isDebugEnabled())
+    {
+      log.debug("processing arguments: " + Stream.of(args).collect(Collectors.joining(",")));
+    }
     if (args.length == 0)
     {
       throw new CommandException("Command requires arguments");
